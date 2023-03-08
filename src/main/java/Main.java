@@ -22,6 +22,7 @@ public class Main {
         myLib.addLibrarian(admin);
 
         Scanner scan=new Scanner(System.in);
+//        scan.next();
         String username,password;
         boolean k=true;
 
@@ -41,21 +42,7 @@ public class Main {
                     if(myLib.doesLibrarianExist(username)) {
                         if (myLib.librarianLogIn(username, password)) {
                             while (k) {
-                                System.out.println("what do you want to do?");
-                                System.out.println("1.add a book");
-                                System.out.println("2.remove a book");
-                                System.out.println("3.get information of a book");
-                                System.out.println("4.check how many copies of a book is available");
-                                System.out.println("5.add a librarian");
-                                System.out.println("6.get information of a librarian");
-                                System.out.println("7.change a librarian's password");
-                                System.out.println("8.remove a librarian");
-                                System.out.println("9.add an user");
-                                System.out.println("10.get information of a user");
-                                System.out.println("11.change a user's password");
-                                System.out.println("12.remove a user");
-                                System.out.println("13.log out");
-
+                                printLibrarianMenu();
 
                                 System.out.println("insert an number: ");
                                 int choice = scan.nextInt();
@@ -127,6 +114,8 @@ public class Main {
                                     case 5:
                                         while (true) {
                                             Librarian librarian1 = inputLibrarian();
+
+//                                            checks if the librarian already exists
                                             if(!myLib.doesLibrarianExist(librarian1.getUsername())) {
                                                 myLib.addLibrarian(librarian1);
                                                 System.out.println(librarian1.getUsername() + " successfully added");
@@ -351,11 +340,7 @@ public class Main {
                         if (myLib.userLogIn(username, password)) {
                             User user = myLib.loggedUser(username);
                             while (k) {
-                                System.out.println("what do you want to do?");
-                                System.out.println("1.rent a book");
-                                System.out.println("2.return a book");
-                                System.out.println("3.get information of a book");
-                                System.out.println("4.log out");
+                                printUserMenu();
 
                                 System.out.println("insert an number: ");
                                 int choice = scan.nextInt();
@@ -369,7 +354,6 @@ public class Main {
 
                                             System.out.println("do you want to rent another book? yes/no");
                                             String ch = scan.next();
-
                                             if (!ch.equals("yes")) {
                                                 break;
                                             }
@@ -438,10 +422,10 @@ public class Main {
         Scanner scan=new Scanner(System.in);
 
         System.out.println("name of the book: ");
-        String name= scan.nextLine();
+        String name= scan.next();
 
         System.out.println("name of the author: ");
-        String author= scan.nextLine();
+        String author= scan.next();
 
         System.out.println("year of publish: ");
         int year= scan.nextInt();
@@ -460,13 +444,13 @@ public class Main {
         Scanner scan=new Scanner(System.in);
 
         System.out.println("username: ");
-        String username= scan.nextLine();
+        String username= scan.next();
 
         System.out.println("password: ");
-        String password= scan.nextLine();
+        String password= scan.next();
 
         System.out.println("joining date: ");
-        String joinedDate= scan.nextLine();
+        String joinedDate= scan.next();
 
         User user=new User(username,password,joinedDate);
 
@@ -479,17 +463,42 @@ public class Main {
         Scanner scan=new Scanner(System.in);
 
         System.out.println("username: ");
-        String username= scan.nextLine();
+        String username= scan.next();
 
         System.out.println("password: ");
-        String password= scan.nextLine();
+        String password= scan.next();
 
         System.out.println("joining date: ");
-        String joinedDate= scan.nextLine();
+        String joinedDate= scan.next();
 
         Librarian user=new Librarian(username,password,joinedDate);
 
         return user;
 
+    }
+
+    public static void printLibrarianMenu(){
+        System.out.println("what do you want to do?");
+        System.out.println("1.add a book");
+        System.out.println("2.remove a book");
+        System.out.println("3.get information of a book");
+        System.out.println("4.check how many copies of a book is available");
+        System.out.println("5.add a librarian");
+        System.out.println("6.get information of a librarian");
+        System.out.println("7.change a librarian's password");
+        System.out.println("8.remove a librarian");
+        System.out.println("9.add an user");
+        System.out.println("10.get information of a user");
+        System.out.println("11.change a user's password");
+        System.out.println("12.remove a user");
+        System.out.println("13.log out");
+    }
+
+    public static void printUserMenu(){
+        System.out.println("what do you want to do?");
+        System.out.println("1.rent a book");
+        System.out.println("2.return a book");
+        System.out.println("3.get information of a book");
+        System.out.println("4.log out");
     }
 }
