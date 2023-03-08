@@ -302,7 +302,14 @@ public class Main {
                                             System.out.println("insert the username you want to remove");
                                             username = scan.next();
 
-                                            myLib.removeUser(username);
+                                            if(myLib.doesUserExist(username)) {
+                                                myLib.removeUser(username);
+                                                System.out.println("you removed " + username + " successfully!");
+                                            }
+
+                                            else{
+                                                System.out.println("there is no user with such username");
+                                            }
 
                                             System.out.println("do you want to remove another user? yes/no");
                                             String ch = scan.next();

@@ -95,8 +95,6 @@ public class User{
                 '}';
     }
 
-    public void borrowedBooksPrint(){
-    }
 
 //    public void
 }

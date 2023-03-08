@@ -145,11 +145,6 @@ public class Library {
         int ind=userIndex(username);
         if (ind!=-1) {
             userList.remove(ind);
-            System.out.println("you removed " + username + " successfully!");
-        }
-
-        else{
-            System.out.println("there is no user with such username");
         }
     }
 
