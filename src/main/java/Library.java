@@ -134,6 +134,9 @@ public class Library {
                 return i;
             }
         }
+
+        //        -1 indicates that the user doesn't exist in the library
+
         return -1;
     }
 
@@ -192,6 +195,8 @@ public class Library {
                 return i;
             }
         }
+
+        //        -1 indicates that the librarian doesn't exist in the library
         return -1;
     }
 
@@ -224,6 +229,7 @@ public class Library {
 
     public void searchLibrarian(String username){
         int ind=librarianIndex(username);
+
         if(ind!=-1) {
             System.out.println(librarianList.get(ind));
         }
