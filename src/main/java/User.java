@@ -48,9 +48,19 @@ public class User{
 
     public void rentBook(String name, Library lib){
         if(lib.bookExistCheck(name)){
-            borrowed.add(name);
-            lib.decreaseBook(name);
-            System.out.println("you borrowed " + name + "!");
+            if(!isBookBorrowed(name)) {
+                borrowed.add(name);
+                lib.decreaseBook(name);
+                System.out.println("you borrowed " + name + "!");
+            }
+
+            else{
+                System.out.println("you have already borrowed this book");
+            }
+        }
+
+        else{
+            System.out.println(name + " is not available in our library");
         }
     }
 
