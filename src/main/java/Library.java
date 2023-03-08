@@ -65,10 +65,6 @@ public class Library {
         }
     }
 
-    public void updateBook(){
-        //TODO
-    }
-
     public void doesBookExist(String name){
         int ind=indexBook(name);
 
