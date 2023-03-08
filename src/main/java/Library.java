@@ -33,6 +33,7 @@ public class Library {
 
     public void removeBook(String name){
         int ind=indexBook(name);
+
         if(ind!=-1) {
             bookList.remove(ind);
             System.out.println("you removed " + name + " successfully!");        }
@@ -53,6 +54,7 @@ public class Library {
         return -1;
     }
 
+//    prints the information of a book
     public void searchBook(String name){
         int ind=indexBook(name);
 
@@ -64,6 +66,7 @@ public class Library {
             System.out.println("wanted book is not available in our library");
         }
     }
+
 
     public void doesBookExist(String name){
         int ind=indexBook(name);
@@ -83,6 +86,7 @@ public class Library {
         }
     }
 
+
     public Boolean bookExistCheck(String name) {
         int ind = indexBook(name);
 
@@ -100,11 +104,13 @@ public class Library {
         }
     }
 
+    // gets called if a user returns a book
     public void increaseBook(String name){
         int ind=indexBook(name);
         numMap.put(bookList.get(ind).getISBN(),numMap.get(bookList.get(ind).getISBN())+1);
     }
 
+    // gets called if a user borrows a book
     public void decreaseBook(String name){
         int ind=indexBook(name);
         numMap.put(bookList.get(ind).getISBN(),numMap.get(bookList.get(ind).getISBN())-1);
@@ -136,6 +142,7 @@ public class Library {
         return -1;
     }
 
+
     public void addUser(User user){
         userList.add(user);
     }
@@ -147,6 +154,7 @@ public class Library {
         }
     }
 
+//    prints information of a user
     public void searchUser(String username){
         int ind=userIndex(username);
         if(ind!=-1) {
@@ -158,6 +166,7 @@ public class Library {
         }
     }
 
+    //    check if the inserted username and password match
     public User loggedUser(String username){
         int ind=userIndex(username);
         return userList.get(ind);
@@ -196,6 +205,7 @@ public class Library {
         return -1;
     }
 
+//    check if the inserted username and password match
     public Boolean librarianLogIn(String username,String password){
         int ind= librarianIndex(username);
 
@@ -210,6 +220,7 @@ public class Library {
         librarianList.add(librarian);
     }
 
+
     public void removeLibrarian(String username){
         int ind=librarianIndex(username);
 
@@ -223,6 +234,7 @@ public class Library {
         }
     }
 
+    //    prints information of a librarian
     public void searchLibrarian(String username){
         int ind=librarianIndex(username);
 
