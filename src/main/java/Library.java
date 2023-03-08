@@ -19,6 +19,8 @@ public class Library {
 
     public void addBook(Book book,int num){
         bookList.add(book);
+
+//        in case if the book already exists, it will add new number of copies
         if(numMap.get(book.getISBN())==null) {
             numMap.put(book.getISBN(), num);
         }
@@ -46,6 +48,8 @@ public class Library {
                 return i;
             }
         }
+
+//        -1 indicates that the book doesn't exist in the library
         return -1;
     }
 
@@ -111,6 +115,8 @@ public class Library {
     }
 
     //user related functions
+
+//    checks if user logged in successfully
     public Boolean userLogIn(String username,String password){
         int ind= userIndex(username);
 
@@ -120,6 +126,7 @@ public class Library {
 
         return false;
     }
+
 
     public int userIndex(String username){
         for (int i = 0; i < userList.size(); i++) {
@@ -162,8 +169,13 @@ public class Library {
         return userList.get(ind);
     }
 
-    public void updateUser(){
-        //TODO
+    public void updateUser(String username, String newPassword){
+        int ind=librarianIndex(username);
+
+        if(ind!=-1){
+            librarianList.get(ind).setPassword(newPassword);
+        }
+
     }
 
     public boolean doesUserExist(String username){
@@ -226,8 +238,12 @@ public class Library {
         }
     }
 
-    public void updateLibrarian(){
-        //TODO
+    public void updateLibrarian(String username,String newPassword){
+        int ind=librarianIndex(username);
+
+        if(ind!=-1){
+            librarianList.get(ind).setPassword(newPassword);
+        }
     }
 
     public boolean doesLibrarianExist(String username){

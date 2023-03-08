@@ -48,11 +48,13 @@ public class Main {
                                 System.out.println("4.check how many copies of a book is available");
                                 System.out.println("5.add a librarian");
                                 System.out.println("6.get information of a librarian");
-                                System.out.println("7.remove a librarian");
-                                System.out.println("8.add an user");
-                                System.out.println("9.get information of a user");
-                                System.out.println("10.remove a user");
-                                System.out.println("11.log out");
+                                System.out.println("7.change a librarian's password");
+                                System.out.println("8.remove a librarian");
+                                System.out.println("9.add an user");
+                                System.out.println("10.get information of a user");
+                                System.out.println("11.change a user's password");
+                                System.out.println("12.remove a user");
+                                System.out.println("13.log out");
 
 
                                 System.out.println("insert an number: ");
@@ -162,8 +164,46 @@ public class Main {
 
                                         break;
 
-
                                     case 7:
+                                        while (true) {
+                                            System.out.println("insert the username: ");
+                                            username = scan.next();
+
+                                            if(myLib.doesLibrarianExist(username)){
+                                                System.out.println("what do you want to set as your new password");
+                                                String newPassword=scan.next();
+
+                                                while(true) {
+                                                    System.out.println("re-enter your new password");
+                                                    String newPassword1 = scan.next();
+
+                                                    if(newPassword.equals(newPassword1)){
+                                                        myLib.updateLibrarian(username,newPassword);
+                                                        System.out.println("password successfully updated");
+                                                        break;
+                                                    }
+
+                                                    System.out.println("passwords dont match");
+                                                }
+                                            }
+
+                                            else{
+                                                System.out.println("there is no librarian with such username");
+                                            }
+
+                                            System.out.println("do you want to update another librarian? yes/no");
+                                            String ch = scan.next();
+
+                                            if (!ch.equals("yes")) {
+                                                break;
+                                            }
+                                        }
+
+                                        break;
+
+
+
+                                    case 8:
                                         while (true) {
                                             System.out.println("insert the username you want to remove");
                                             username = scan.next();
@@ -180,7 +220,8 @@ public class Main {
 
                                         break;
 
-                                    case 8:
+
+                                    case 9:
                                         while (true) {
                                             User user = inputUser();
                                             if(!myLib.doesUserExist(user.getUsername())) {
@@ -202,7 +243,7 @@ public class Main {
 
                                         break;
 
-                                    case 9:
+                                    case 10:
                                         while (true) {
                                             System.out.println("insert the username you want information from");
                                             username = scan.next();
@@ -219,7 +260,44 @@ public class Main {
 
                                         break;
 
-                                    case 10:
+                                    case 11:
+                                        while (true) {
+                                            System.out.println("insert the username: ");
+                                            username = scan.next();
+
+                                            if(myLib.doesUserExist(username)){
+                                                System.out.println("what do you want to set as your new password");
+                                                String newPassword=scan.next();
+
+                                                while(true) {
+                                                    System.out.println("re-enter your new password");
+                                                    String newPassword1 = scan.next();
+
+                                                    if(newPassword.equals(newPassword1)){
+                                                        myLib.updateUser(username,newPassword);
+                                                        System.out.println("password successfully updated");
+                                                        break;
+                                                    }
+
+                                                    System.out.println("passwords dont match");
+                                                }
+                                            }
+
+                                            else{
+                                                System.out.println("there is no user with such username");
+                                            }
+
+                                            System.out.println("do you want to update another user? yes/no");
+                                            String ch = scan.next();
+
+                                            if (!ch.equals("yes")) {
+                                                break;
+                                            }
+                                        }
+
+                                        break;
+
+                                    case 12:
                                         while (true) {
                                             System.out.println("insert the username you want to remove");
                                             username = scan.next();
@@ -237,7 +315,7 @@ public class Main {
                                         break;
 
 
-                                    case 11:
+                                    case 13:
                                         k = false;
                                         break;
                                 }
@@ -347,6 +425,8 @@ public class Main {
         }
     }
 
+
+//    generates a new book
     public static Book inputBook(){
         Scanner scan=new Scanner(System.in);
 
@@ -368,6 +448,7 @@ public class Main {
 
     }
 
+//    generates a new user
     public static User inputUser(){
         Scanner scan=new Scanner(System.in);
 
@@ -386,6 +467,7 @@ public class Main {
 
     }
 
+//    generates a new librarian
     public static Librarian inputLibrarian(){
         Scanner scan=new Scanner(System.in);
 
